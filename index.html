@@ -310,7 +310,8 @@ yaw = 180; pitch = -15;
 tam(); requestAnimationFrame(bucle);
 fetch('recorrido/nodos.json').then(r => r.json()).then(j => {
   NODOS = j.nodos;
-  const pedido0 = qs.get('n'), ini = pedido0 && NODOS.find(x => x.id === pedido0) ? pedido0 : 'n_0_2'; // por defecto: al norte del hotel mirando al sur
+  const pedido0 = qs.get('n'), def = ['n_0_2', 'n_1_2', 'n_2_2'].find(k => NODOS.find(x => x.id === k)) || (NODOS[0] && NODOS[0].id);
+  const ini = pedido0 && NODOS.find(x => x.id === pedido0) ? pedido0 : def; // por defecto: al norte del hotel mirando al sur
   abrirNodo(ini, true);
 }).catch(() => { $('cargaTxt').textContent = 'El recorrido se está renderizando: vuelve en un rato'; });
 </script>
