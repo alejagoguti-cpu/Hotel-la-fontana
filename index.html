@@ -208,7 +208,7 @@ function irA(id, sentido = 1) {
 }
 function pintarMapa() {
   const svg = $('mapaSvg'), n = NODOS.find(x => x.id === actual); if (!svg || !n) return;
-  const N = Math.max(...NODOS.map(x => x.f)) + 1, e = 134 / N, P = m => [(m.c + .5) * e, (m.f + .5) * e];
+  const N = 5, e = 134 / N, P = m => [(m.c + .5) * e, (m.f + .5) * e];
   let h = '<rect x="0" y="0" width="134" height="134" rx="8" fill="rgba(255,255,255,.04)"/>';
   const c = P(n), a = yaw * Math.PI / 180, L = 26, ab = 0.6;
   const dx = t => Math.sin(a + t) * L, dy = t => -Math.cos(a + t) * L;
